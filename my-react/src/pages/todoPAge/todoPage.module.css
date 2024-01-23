@@ -1,0 +1,27 @@
+
+.todoBox {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+    overflow-y: auto;
+    max-height: 75vh;
+    width: 307px;
+    margin: auto;
+  }
+  
+  .todoBox::-webkit-scrollbar {
+    width: 0.3vw;
+  }
+  
+  .todoBox::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 0.25vw grey;
+    border-radius: 1vh 0.5vw 1vh 0.5vw;
+  }
+  
+  .todoBox::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #38aafb 0%, #004d84 100%);
+    border-radius: 1vh 0.5vw 1vh 0.5vw;
+  }
+  

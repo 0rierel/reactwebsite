@@ -1,0 +1,19 @@
+
+.formContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 37px;
+  }
+  
+
+.inputField label {
+    left: unset;
+    right: 1.75rem;
+    transform-origin: right;
+  }
+  
+  .inputField legend {
+    text-align: right;
+  }
+  
+  

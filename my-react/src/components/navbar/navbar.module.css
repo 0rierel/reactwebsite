@@ -1,0 +1,37 @@
+
+.app-bar {
+    display: flex;
+    flex-grow: 1;
+  }
+  
+  .app-bar-container {
+    background-color: #333;
+  }
+  
+  .app-bar-light {
+    background-color: #fff;
+  }
+  
+  .title {
+    flex-grow: 1;
+    color: #00008B;
+    -Webkit-text-stroke-color: #fff;
+    -Webkit-text-stroke-width: 1px;
+    text-shadow: 3px 3px 3px #000;
+    font-size: 4rem !important;
+  }
+  
+  .user-greeting {
+    color: #000;
+    margin-left: 1rem;
+  }
+  
+  .logout-button {
+    color: #fff;
+    background-color: #000;
+  }
+  
+  .logout-button:hover {
+    background-color: #333;
+  }
+  

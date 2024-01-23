@@ -1,0 +1,10 @@
+.dropDownMenu label {
+  left: unset;
+  right: 1.75rem;
+  transform-origin: right;
+}
+
+.dropDownMenu legend {
+  text-align: right;
+}
+

@@ -1,16 +1,16 @@
+import { useState } from "react";
 import { SxProps } from "@mui/system";
 import { Theme } from "@mui/material/styles";
-import { MenuItem, TextField, InputAdornment, IconButton } from "@mui/material";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import styles from "./dropDownMenu.module.css";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
-import styles from "./dropDownMenu.module.css"; 
-import { useState } from "react";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import { MenuItem, TextField, InputAdornment, IconButton } from "@mui/material";
 
 interface props<T> {
   objArr: T[];
   onSelectChange: (selectedItem: T | null) => void;
   labelText: string;
-  sx?: SxProps<Theme>; 
+  sx?: SxProps<Theme>;
   idKey: keyof T;
   displayKey: keyof T;
 }
@@ -31,10 +31,10 @@ const DropDownMenu = <T,>({
     );
     onSelectChange(selectedItem || null);
   };
- 
+
   return (
     <TextField
-      className={styles.dropDownMenu} 
+      className={styles.dropDownMenu}
       select
       type="search"
       label={labelText}
@@ -58,8 +58,8 @@ const DropDownMenu = <T,>({
       }}
     >
       {objArr.map((item) => (
-        <MenuItem  key={String(item[idKey])} value={String(item[idKey])}>
-          {String(item[displayKey]) }
+        <MenuItem key={String(item[idKey])} value={String(item[idKey])}>
+          {String(item[displayKey])}
         </MenuItem>
       ))}
     </TextField>

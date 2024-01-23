@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./todoSummary.module.css";
 import {ToDo} from "../../types/toDoType";
+import styles from "./todoSummary.module.css";
 
 interface props {
   toDos: ToDo[];

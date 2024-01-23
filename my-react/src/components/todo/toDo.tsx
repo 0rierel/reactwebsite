@@ -1,13 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import * as api from "../../app/api";
+import styles from "./todo.module.css";
+import CustomAlert from "../cutomeAlert";
 import { ToDo } from "../../types/toDoType";
 import EditIcon from "@mui/icons-material/Edit";
 import CheckIcon from "@mui/icons-material/Check";
-import CloseIcon from "@mui/icons-material/Close"; // Import CloseIcon
+import CloseIcon from "@mui/icons-material/Close";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Box, ToggleButton, TextField, styled } from "@mui/material";
-import CustomAlert from "../cutomeAlert";
-import * as api from "../../app/api";
-import styles from "./todo.module.css";
+import React, { useEffect, useRef, useState } from "react";
+import { Box, ToggleButton, TextField } from "@mui/material";
 
 enum RequestState {
   Idle,

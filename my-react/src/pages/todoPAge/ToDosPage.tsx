@@ -1,33 +1,31 @@
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../app/store";
-import { ToDo } from "../../types/toDoType";
-import Navbar from "../../components/navbar/navbar";
-import ToDoForm from "../../components/todoForm/toDoForm";
-import SearchIcon from "@mui/icons-material/Search";
-import AddIcon from "@mui/icons-material/Add";
-import Box from "@mui/material/Box";
-import ToDoBox from "../../components/todo/toDo";
-import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
-import DarkModeButton from "../../components/darkMode/darkModeButton";
-import { createUserToDo, getToDoListByUserId } from "../../app/api";
-import TodoSummary from "../../components/todoSummary/todoSummary";
-import { useNavigate } from "react-router-dom";
 import {
   setUserId as setUserIdInStore,
   setUserName as setUserNameInStore,
 } from "../../features/user/userSlice";
+import Box from "@mui/material/Box";
 import styles from "./todoPage.module.css";
+import { useState, useEffect } from "react";
+import { RootState } from "../../app/store";
+import { ToDo } from "../../types/toDoType";
+import AddIcon from "@mui/icons-material/Add";
+import { useNavigate } from "react-router-dom";
+import ToDoBox from "../../components/todo/toDo";
+import Navbar from "../../components/navbar/navbar";
+import SearchIcon from "@mui/icons-material/Search";
+import { useDispatch, useSelector } from "react-redux";
+import ToDoForm from "../../components/todoForm/toDoForm";
+import TodoSummary from "../../components/todoSummary/todoSummary";
+import { createUserToDo, getToDoListByUserId } from "../../app/api";
+import DarkModeButton from "../../components/darkMode/darkModeButton";
+import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
 
-const generateToDos = (toDos: ToDo[], searchTerm: string) => {
+const filterToDos = (toDos: ToDo[], searchTerm: string) => {
   if (searchTerm.trim() === "") {
     return toDos;
   } else {
     return toDos.filter((toDo) => toDo.desc.includes(searchTerm.trim()));
   }
 };
-
-const missionFor = [{},{}]
 
 const ToDosPage = () => {
   const dispatch = useDispatch();
@@ -86,6 +84,11 @@ const ToDosPage = () => {
     },
   });
 
+  const forms = [
+    { onSearch: handleSearch, icon: SearchIcon, promptText: "חיפוש משימה" },
+    { onSubmit: handleNewToDoSubmit, icon: AddIcon, promptText: "הוספת משימה" },
+  ];
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -94,20 +97,12 @@ const ToDosPage = () => {
           <Navbar userName={userName} logoutHandler={logoutHandler}></Navbar>
         )}
         <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
-          <ToDoForm
-            onSearch={handleSearch}
-            icon={SearchIcon}
-            promptText="חיפוש משימה"
-          ></ToDoForm>
-          <ToDoForm
-            onSubmit={handleNewToDoSubmit}
-            icon={AddIcon}
-            promptText="הוספת משימה"
-          ></ToDoForm>{" "}
+          {forms.map((form, index) => (
+            <ToDoForm key={index} {...form}></ToDoForm>
+          ))}
         </Box>
-
         <Box className={styles.todoBox}>
-          {generateToDos(todoList, searchTerm).map((toDo: ToDo) => (
+          {filterToDos(todoList, searchTerm).map((toDo: ToDo) => (
             <ToDoBox
               onToggle={(id) => {
                 setTodoList((prevTodos) =>

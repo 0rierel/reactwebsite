@@ -1,10 +1,10 @@
-import styles from "./navbar.module.css";
 import Box from "@mui/material/Box";
 import { Link } from "react-router-dom";
+import styles from "./navbar.module.css";
 import Button from "@mui/material/Button";
-import { RootState } from "../../app/store";
 import { useSelector } from "react-redux";
 import AppBar from "@mui/material/AppBar";
+import { RootState } from "../../app/store";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 
@@ -15,10 +15,6 @@ interface props {
 
 const ButtonAppBar = ({ userName, logoutHandler }: props) => {
   const isDarkMode = useSelector((state: RootState) => state.darkMode.value);
-
-  const logoutBubbler = () => {
-    logoutHandler();
-  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -45,7 +41,7 @@ const ButtonAppBar = ({ userName, logoutHandler }: props) => {
                   backgroundColor: isDarkMode ? "#ccc" : "#333",
                 },
               }}
-              onClick={logoutBubbler}
+              onClick={logoutHandler}
             >
               התנתק
             </Button>

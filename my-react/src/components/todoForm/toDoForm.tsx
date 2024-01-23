@@ -2,14 +2,14 @@ import styles from "./ToDoForm.module.css";
 import { InputAdornment, TextField, Box } from "@mui/material";
 import React, { ChangeEvent, FormEvent, useState, ElementType } from "react";
 
-interface Props {
+interface props {
   onSearch?: (term: string) => void;
   onSubmit?: (term: string) => void;
   icon: ElementType;
   promptText: string;
 }
 
-const ToDoForm = ({ onSearch, onSubmit, icon, promptText }: Props) => {
+const ToDoForm = ({ onSearch, onSubmit, icon, promptText }: props) => {
   const [inputValue, setInputValue] = useState<string>("");
 
   const handleInputChanged = (e: ChangeEvent<HTMLInputElement>) => {

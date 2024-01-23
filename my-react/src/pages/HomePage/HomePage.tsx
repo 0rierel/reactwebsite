@@ -1,22 +1,20 @@
-import { Link } from "react-router-dom";
-import Button from "@mui/material/Button";
-import { useDispatch, useSelector } from "react-redux";
-import { setUserId, setUserName } from "../../features/user/userSlice";
-import { User } from "../../types/userTypes";
-import { useState, useEffect } from "react";
 import {
   createTheme,
   ThemeProvider,
   CssBaseline,
-  Typography,
-  Box,
-} from "@mui/material";
+  Typography, Box,} from "@mui/material";
+import * as api from "../../app/api";
+import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
+import styles from "./HomePage.module.css";
+import { useState, useEffect } from "react";
 import { RootState } from "../../app/store";
+import { User } from "../../types/userTypes";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserId, setUserName } from "../../features/user/userSlice";
 import DarkModeButton from "../../components/darkMode/darkModeButton";
 import DropDownMenu from "../../components/dropDowmMenu/dropDownMenu";
-import * as api from "../../app/api";
-import { useNavigate } from "react-router-dom";
-import styles from "./HomePage.module.css";
 
 const Home = () => {
   const dispatch = useDispatch();
